@@ -28,13 +28,16 @@ def visualize(
     cv2.rectangle(image, start_point, end_point, TEXT_COLOR, 3)
 
     # Draw label and score
-    category = detection.categories[0]
-    category_name = category.category_name
-    probability = round(category.score, 2)
-    result_text = category_name + ' (' + str(probability) + ')'
-    text_location = (MARGIN + bbox.origin_x,
-                     MARGIN + ROW_SIZE + bbox.origin_y)
-    cv2.putText(image, result_text, text_location, cv2.FONT_HERSHEY_PLAIN,
-                FONT_SIZE, TEXT_COLOR, FONT_THICKNESS)
+    # category = detection.categories[0]
+    # category_name = category.category_name
+    # probability = round(category.score, 2)
+    # if probability is not None:
+    #   result_text = category_name + ' (' + str(probability) + ')'
+    # else:
+    #   result_text = 'face'
+    # text_location = (MARGIN + bbox.origin_x,
+    #                  MARGIN + ROW_SIZE + bbox.origin_y)
+    # cv2.putText(image, result_text, text_location, cv2.FONT_HERSHEY_PLAIN,
+    #             FONT_SIZE, TEXT_COLOR, FONT_THICKNESS)
 
   return image
