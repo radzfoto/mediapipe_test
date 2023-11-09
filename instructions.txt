@@ -1,0 +1,13 @@
+Instructions:
+Create a node-red graph generating all the necessary json code.
+Each node can be implemented in any language and any framework you choose
+provided it meets with the requirements specifed below. Write all the 
+necessary code for a full implementation. You can assume a computer with
+the Linux operating system will be the platform.
+Requirements:
+1. read video from a webcam in real-time
+2. perform hand landmark detection in real-time
+3. Display the hand landmarks as drawings or overlays on the webcam video
+4. Design the nodes flexibly so that the hand landmark algorithm can be changed to a face detection and object detection model in future.
+5. Provide clear instructions on how to install the necessary software and run the application
+
