@@ -1,24 +1,21 @@
-# This script would be saved as display.py
-import cv2
-import sys
+import asyncio
 import base64
+import cv2
 import json
 import numpy as np
+import websockets
 
-# Receive base64 encoded image from stdin
-input_data = json.loads(sys.stdin.read())
-image_data = input_data.get("image")
+async def receive_and_display():
+    uri = "ws://localhost:1880/ws/detect"  # WebSocket URI for receiving processed frames
+    async with websockets.connect(uri) as websocket:
+        while True:
+            message = await websocket.recv()
+            data = json.loads(message)
+            image_data = base64.b64decode(data['image'])
+            frame = cv2.imdecode(np.frombuffer(image_data, np.uint8), cv2.IMREAD_COLOR)
+            cv2.imshow('Processed Image', frame)
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
 
-if not image_data:
-    print(json.dumps({"error": "No image data"}))
-    sys.exit(1)
-
-# Convert base64 to image
-jpg_original = base64.b64decode(image_data)
-jpg_as_np = np.frombuffer(jpg_original, dtype=np.uint8)
-frame = cv2.imdecode(jpg_as_np, flags=1)
-
-# Display the resulting image
-cv2.imshow('Processed Image', frame)
-cv2.waitKey(0)
+asyncio.get_event_loop().run_until_complete(receive_and_display())
 cv2.destroyAllWindows()
