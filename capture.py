@@ -5,7 +5,9 @@ import websockets
 import json
 
 async def capture_and_send():
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(0)  # Start video capture
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
     uri = "ws://localhost:1880/ws/capture"  # WebSocket URI
     async with websockets.connect(uri) as websocket:
         while cap.isOpened():
