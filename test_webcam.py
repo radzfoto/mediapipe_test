@@ -4,9 +4,9 @@ import cv2
 def test_webcam():
     # Open a video stream from the default webcam (usually webcam 0)
       # Start capturing video input from the camera
-    cap = cv2.VideoCapture(0)
-    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
-    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+    cap = cv2.VideoCapture(2)
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
 
     # Check if the webcam is opened correctly
     if not cap.isOpened():

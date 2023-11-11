@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "node-red-contrib-python-function": "^0.0.5"
+  }
+}

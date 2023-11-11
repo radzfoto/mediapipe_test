@@ -1,21 +1,23 @@
-import asyncio
 import base64
 import cv2
-import json
 import numpy as np
-import websockets
 
-async def receive_and_display():
-    uri = "ws://localhost:1880/ws/detect"  # WebSocket URI for receiving processed frames
-    async with websockets.connect(uri) as websocket:
-        while True:
-            message = await websocket.recv()
-            data = json.loads(message)
-            image_data = base64.b64decode(data['image'])
-            frame = cv2.imdecode(np.frombuffer(image_data, np.uint8), cv2.IMREAD_COLOR)
-            cv2.imshow('Processed Image', frame)
-            if cv2.waitKey(1) & 0xFF == ord('q'):
-                break
+def display_image(input_data):
+    if input_data is None:
+        height: int = 1080
+        width: int = 1920
+        frame = np.zeros((height, width, 3), dtype=np.uint8)
+    else:
+        # Decode the image
+        img_data = base64.b64decode(input_data)
+        np_img = np.frombuffer(img_data, dtype=np.uint8)
+        frame = cv2.imdecode(np_img, cv2.IMREAD_COLOR)
 
-asyncio.get_event_loop().run_until_complete(receive_and_display())
-cv2.destroyAllWindows()
+    # Display the image (modify this part based on your environment)
+    cv2.imshow('Processed Image', frame)
+    cv2.waitKey(1)
+    cv2.destroyAllWindows()
+
+    return {'payload': 'Image displayed'}
+
+msg = display_image(msg['payload'])

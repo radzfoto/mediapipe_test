@@ -1,0 +1,68 @@
+[
+    {
+        "id": "capture-node",
+        "type": "exec",
+        "name": "Capture Script",
+        "command": "python3 /home/raul/src/mediapipe_test/capture.py",
+        "append": "",
+        "x": 100,
+        "y": 60,
+        "wires": [["websocket-in-detect"]]
+    },
+    {
+        "id": "detect-node",
+        "type": "exec",
+        "name": "Detect Script",
+        "command": "python3 /home/raul/src/mediapipe_test/detect.py",
+        "append": "",
+        "x": 300,
+        "y": 60,
+        "wires": [["websocket-out-display"]]
+    },
+    {
+        "id": "display-node",
+        "type": "exec",
+        "name": "Display Script",
+        "command": "python3 /home/raul/src/mediapipe_test/display.py",
+        "append": "",
+        "x": 500,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "websocket-in-detect",
+        "type": "websocket in",
+        "name": "WebSocket In from Capture",
+        "server": "",
+        "client": "e1810a29.3fa1f8",
+        "path": "",
+        "wholemsg": "false",
+        "x": 100,
+        "y": 160,
+        "wires": [["detect-node"]]
+    },
+    {
+        "id": "websocket-out-display",
+        "type": "websocket out",
+        "name": "WebSocket Out to Display",
+        "server": "",
+        "client": "9a2b1e5a.6bd2",
+        "path": "",
+        "wholemsg": "false",
+        "x": 300,
+        "y": 160,
+        "wires": [["display-node"]]
+    },
+    {
+        "id": "e1810a29.3fa1f8",
+        "type": "websocket-listener",
+        "path": "/ws/capture",
+        "wholemsg": "false"
+    },
+    {
+        "id": "9a2b1e5a.6bd2",
+        "type": "websocket-listener",
+        "path": "/ws/detect",
+        "wholemsg": "false"
+    }
+]

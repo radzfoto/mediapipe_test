@@ -1,0 +1,31 @@
+[
+    {
+        "id": "1",
+        "type": "python-function",
+        "name": "Capture",
+        "command": "python3 capture.py",
+        "wires": [
+            [
+                "2"
+            ]
+        ]
+    },
+    {
+        "id": "2",
+        "type": "python-function",
+        "name": "Detect",
+        "command": "python3 detect.py",
+        "wires": [
+            [
+                "3"
+            ]
+        ]
+    },
+    {
+        "id": "3",
+        "type": "python-function",
+        "name": "Display",
+        "command": "python3 display.py",
+        "wires": []
+    }
+]

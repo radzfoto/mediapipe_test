@@ -19,16 +19,16 @@ def main():
                             min_detection_confidence=0.5,
                             min_tracking_confidence=0.5) as hands:
 
-        cap = cv2.VideoCapture(0)  # Start video capture
-        cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
-        cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+        cap = cv2.VideoCapture(2)  # Start video capture
+        cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
+        cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
 
         while cap.isOpened():
             ret, frame = cap.read()
             if not ret:
                 exit(1)
             # frame = cv2.imread('/home/raul/Downloads/hands.jpg')
-            # frame = cv2.flip(frame, 1)
+            frame = cv2.flip(frame, 1)
             frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             results = hands.process(frame_rgb)
 
