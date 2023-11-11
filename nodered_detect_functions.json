@@ -1,7 +1,7 @@
 [
     {
         "id": "1",
-        "type": "node-red-contrib-python-function",
+        "type": "python-function",
         "name": "Capture",
         "command": "python3 capture.py",
         "wires": [
@@ -12,7 +12,7 @@
     },
     {
         "id": "2",
-        "type": "node-red-contrib-python-function",
+        "type": "python-function",
         "name": "Detect",
         "command": "python3 detect.py",
         "wires": [
@@ -23,7 +23,7 @@
     },
     {
         "id": "3",
-        "type": "node-red-contrib-python-function",
+        "type": "python-function",
         "name": "Display",
         "command": "python3 display.py",
         "wires": []
