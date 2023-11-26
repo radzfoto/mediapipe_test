@@ -1,8 +1,9 @@
-You are a python expert programming on Ubuntu linux. Please write ALL the code necessary to perform the following tasks. Generate only the code without any explanations:
-1. Setup and configure a webcam
+You are a python and mediapipe expert programming on Ubuntu linux. Please write ALL the code necessary to perform the following tasks. Generate only the code without any explanations:
+1. Setup and configure a webcam for a resolution of 720p and a framerate of 15FPS
 2. Continuously capture video frames from the webcam and pass them one by one to a method that will perform hand landmark detection
 3. Pass the hand landmark information for each video frame to a method that will draw the landmarks on the video frame as pass the video frame to another method that will display them
 4. Write a method that will display each video frame in real-time in a window
+Create 4 functions for a) webcam configuration, b) image capture, c) getting landmarks, and d) displaying landmarks, and create a main() function that calls each of these functions as needed
 
 Generated code
 
